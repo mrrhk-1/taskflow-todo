@@ -1,0 +1,40 @@
+name: TaskFlow CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check required files
+        run: |
+          test -f index.html
+          test -f style.css
+          test -f script.js
+
+      - name: Check JavaScript syntax
+        run: node --check script.js
+
+      - name: Check HTML
+        run: |
+          grep -q "<html" index.html
+          grep -q "</html>" index.html
+
+      - name: Check CSS
+        run: |
+          test -s style.css
+
+      - name: CI successful
+        run: echo "TaskFlow CI checks passed successfully!"
