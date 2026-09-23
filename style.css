@@ -13,7 +13,7 @@
     --primary: #5b5cf0;
     --primary-dark: #4647d9;
     --shadow: 0 12px 35px rgba(31, 41, 72, 0.08);
-    --danger: #ef5350;
+    --danger: #693433;
     --success: #20a36a;
 }
 
@@ -262,7 +262,7 @@ select,
     border: 2px solid var(--border);
     background: transparent;
     color: white;
-    font-size: 15px;
+    font-size: 17px;
 }
 
 .task.completed .check-btn {
