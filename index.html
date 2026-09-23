@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow - Modern To-Do</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">PERSONAL PRODUCTIVITY</p>
+                <h1>TaskFlow</h1>
+                <p class="subtitle">Plan your day. Finish what matters.</p>
+            </div>
+            <button id="themeBtn" class="theme-btn" title="Toggle dark mode">☾</button>
+        </header>
+
+        <main>
+            <section class="stats">
+                <div class="stat-card">
+                    <span>Total</span>
+                    <strong id="totalCount">0</strong>
+                </div>
+                <div class="stat-card">
+                    <span>Completed</span>
+                    <strong id="completedCount">0</strong>
+                </div>
+                <div class="stat-card">
+                    <span>Pending</span>
+                    <strong id="pendingCount">0</strong>
+                </div>
+                <div class="stat-card">
+                    <span>Overdue</span>
+                    <strong id="overdueCount">0</strong>
+                </div>
+            </section>
+
+            <section class="progress-card">
+                <div class="progress-top">
+                    <span>Today's progress</span>
+                    <strong id="progressText">0%</strong>
+                </div>
+                <div class="progress">
+                    <div id="progressBar"></div>
+                </div>
+            </section>
+
+            <section class="controls">
+                <div class="search-box">
+                    <span>⌕</span>
+                    <input id="searchInput" type="text" placeholder="Search tasks...">
+                </div>
+
+                <select id="filterSelect">
+                    <option value="all">All Tasks</option>
+                    <option value="active">Pending</option>
+                    <option value="completed">Completed</option>
+                    <option value="overdue">Overdue</option>
+                </select>
+
+                <select id="sortSelect">
+                    <option value="newest">Newest</option>
+                    <option value="oldest">Oldest</option>
+                    <option value="priority">Priority</option>
+                    <option value="due">Due Date</option>
+                </select>
+            </section>
+
+            <section class="add-card">
+                <div class="section-heading">
+                    <div>
+                        <h2>Add a task</h2>
+                        <p>Keep your next action clear and simple.</p>
+                    </div>
+                </div>
+
+                <form id="taskForm">
+                    <div class="form-row">
+                        <input id="taskTitle" type="text" placeholder="What needs to be done?" maxlength="80" required>
+                        <select id="prioritySelect">
+                            <option value="high">High Priority</option>
+                            <option value="medium" selected>Medium Priority</option>
+                            <option value="low">Low Priority</option>
+                        </select>
+                        <input id="dueDate" type="date">
+                        <select id="categorySelect">
+                            <option value="Study">Study</option>
+                            <option value="Work">Work</option>
+                            <option value="Personal">Personal</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <button class="add-btn" type="submit">+ Add Task</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="tasks-section">
+                <div class="section-heading">
+                    <div>
+                        <h2>My Tasks</h2>
+                        <p id="taskSummary">No tasks yet.</p>
+                    </div>
+                    <button id="clearCompletedBtn" class="text-btn">Clear completed</button>
+                </div>
+
+                <div id="taskList" class="task-list"></div>
+
+                <div id="emptyState" class="empty-state">
+                    <div class="empty-icon">✓</div>
+                    <h3>You're all caught up!</h3>
+                    <p>Add a task above and start getting things done.</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <span>TaskFlow</span>
+            <span>Saved automatically in your browser</span>
+        </footer>
+    </div>
+
+    <div id="editModal" class="modal hidden">
+        <div class="modal-box">
+            <button id="closeModal" class="close-btn">×</button>
+            <h2>Edit Task</h2>
+            <p>Update your task details.</p>
+
+            <form id="editForm">
+                <label>Task
+                    <input id="editTitle" type="text" maxlength="80" required>
+                </label>
+
+                <label>Priority
+                    <select id="editPriority">
+                        <option value="high">High Priority</option>
+                        <option value="medium">Medium Priority</option>
+                        <option value="low">Low Priority</option>
+                    </select>
+                </label>
+
+                <label>Due date
+                    <input id="editDueDate" type="date">
+                </label>
+
+                <label>Category
+                    <select id="editCategory">
+                        <option value="Study">Study</option>
+                        <option value="Work">Work</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </label>
+
+                <button class="save-btn" type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
