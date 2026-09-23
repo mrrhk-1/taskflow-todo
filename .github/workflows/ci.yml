@@ -20,7 +20,7 @@ jobs:
 
       - name: Check required files
         run: |
-          test -f hassan.html
+          test -f index.html
           test -f style.css
           test -f script.js
 
